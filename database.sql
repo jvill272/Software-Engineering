@@ -20,7 +20,7 @@ CREATE TABLE Books (
     book_publisher text NOT NULL,
     book_year int,
     book_sales integer,
-            fk_author_name text,
+           fk_author_name text,
            CONSTRAINT fk_author_name
                 FOREIGN KEY (fk_author_name)
                 REFERENCES Authors (author_name)
@@ -112,7 +112,8 @@ INSERT INTO Cart VALUES (
 
 
 CREATE TABLE Ratings (
-    rating integer NOT NULL,
+    rating integer 
+	CHECK (rating > 0 AND rating < 6) NOT NULL,
     rating_date date NOT NULL,
     fk_book_rater text,
     CONSTRAINT fk_book_rater
@@ -122,7 +123,7 @@ CREATE TABLE Ratings (
     CONSTRAINT fk_rating_bname
         FOREIGN KEY (fk_rating_bname)
 		REFERENCES Books (book_name),
-    PRIMARY KEY(fk_book_rater,fk_rating_bname)
+	PRIMARY KEY(fk_book_rater,fk_rating_bname)
 );
 INSERT INTO Ratings VALUES (
         '1',
@@ -132,7 +133,7 @@ INSERT INTO Ratings VALUES (
 );
 
 INSERT INTO Ratings VALUES (
-        '10',
+        '5',
         TO_DATE('02/12/2022', 'MM/DD/YYYY'),
 		(SELECT(user_uname) FROM Users WHERE user_uname = 'JVILL272'),
 		(SELECT(book_name) FROM Books WHERE book_name = 'Pet Semetary')
