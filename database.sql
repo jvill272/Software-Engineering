@@ -44,6 +44,8 @@ INSERT INTO Books VALUES (
 
 CREATE TABLE Users (
     user_uname VARCHAR(255) PRIMARY KEY,
+	user_email VARCHAR(255),
+	--CHECK substring(user_email from '%#"@#"_' for '#')
     user_pword VARCHAR(255) NOT NULL,
     user_address VARCHAR(255),
     user_name VARCHAR(255)
@@ -53,6 +55,7 @@ INSERT INTO Users
 VALUES
 (
     'JVILL272',
+	'jvill272@fiu.edu',
     'Password',
     '123 Main St',
     'Jorge Villacorta'
@@ -62,12 +65,11 @@ INSERT INTO Users
 VALUES
 (
     'BWAT001',
+	'bwat001',
     'SECONDPword',
     '987 First St',
     'Brandon Wat'
 );
-
-
 
 CREATE TABLE Credit (
     card_number integer PRIMARY KEY,    
@@ -109,8 +111,6 @@ INSERT INTO Cart VALUES (
     (SELECT(book_name) FROM Books WHERE book_name = 'Pet Semetary')
 );
 
-
-
 CREATE TABLE Ratings (
     rating integer 
 	CHECK (rating > 0 AND rating < 6) NOT NULL,
@@ -141,6 +141,7 @@ INSERT INTO Ratings VALUES (
 
 CREATE TABLE Comments (
     comment_text text NOT NULL,
+	comment_date date NOT NULL,
     fk_book_commenter text,
         CONSTRAINT fk_book_commenter
            FOREIGN KEY (fk_book_commenter)
@@ -153,26 +154,27 @@ CREATE TABLE Comments (
 );
 
 
-INSERT INTO Comments Values
+INSERT INTO Comments 
+Values
 (
     'This books is so cool, man.',
+	'03-05-2022',
 	(SELECT(user_uname) FROM Users WHERE user_uname = 'JVILL272'),
 	(SELECT(book_name) FROM Books WHERE book_name = 'Pet Semetary')
 );
 
-INSERT INTO Comments Values
+INSERT INTO Comments
+Values 
 (
     'This books is terrible. BOOOO',
+	'03-05-2022',
 	(SELECT(user_uname) FROM Users WHERE user_uname = 'BWAT001'),
 	(SELECT(book_name) FROM Books WHERE book_name = 'Pet Semetary')
 );
 
-
 SELECT Ratings.fk_book_rater, Ratings.fk_rating_bname, Ratings.rating, Comments.comment_text
 FROM Ratings
 INNER JOIN Comments ON Ratings.fk_book_rater=Comments.fk_book_commenter;
-
-
 
 
 CREATE TABLE Wishlists (
@@ -201,10 +203,3 @@ INSERT INTO Wishlists VALUES
     (SELECT(user_uname) FROM Users WHERE user_uname = 'BWAT001'),
     (SELECT(book_name) FROM Books WHERE book_name = 'Pet Semetary')
 )
-
-
-    
-
-
-
-
