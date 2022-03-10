@@ -39,8 +39,24 @@ INSERT INTO Books VALUES (
     'Simon & Schuster',
     1983,
     0,
-    'Stephen King');
+    'Stephen King'
+);
 
+INSERT INTO Authors VALUES (
+    'J.K. Rowling'
+);
+
+INSERT INTO Books VALUES (
+    0747532699,
+    'Harry Potter and the Sorcerer''s Stone',
+    'You''re a wizard, Harry.',
+    11.99,
+    'fantasy',
+    'Bloomsbury',
+    1997,
+    0,
+    'J.K. Rowling'
+);
 
 CREATE TABLE Users (
     user_uname VARCHAR(255) PRIMARY KEY,
