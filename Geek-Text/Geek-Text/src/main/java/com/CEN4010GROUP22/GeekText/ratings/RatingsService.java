@@ -34,11 +34,11 @@ public class RatingsService {
         if(!ratingSearched.isEmpty()){
             System.out.println("\nA rating for " + book + " from " + rater + " already exists. The new rating will not be saved.\n");
             
-            // end method because this rating already exists -> should not be saved
+            // end method because a rating for this rater + book PK combination already exists -> should not be saved
             return;
         }
 
-        // rating from the current (rater, bookName) combination(PK) does not exist yet -> save the rating to database
+        // rating from the current (rater, bookName) combination PK does not exist yet -> save the rating to database
         ratingRepository.save(rating);
         System.out.println("\nNew rating saved to database.");
     }

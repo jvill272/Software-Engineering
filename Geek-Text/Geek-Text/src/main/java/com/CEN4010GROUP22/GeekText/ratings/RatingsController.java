@@ -22,7 +22,7 @@ public class RatingsController {
 
     @GetMapping
 	public List<Ratings> getRatings(){
-        System.out.println("GET Request is successful.");
+        System.out.println("GET Request for ratings is successful.");
         
         return ratingService.getRatings(); // returns all ratings currently in the database
     }
