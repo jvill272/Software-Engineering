@@ -16,12 +16,12 @@ public class RatingsService {
         this.ratingRepository = ratingRepository;
     }
 
-    // method to obtain all current ratings in database
+    // retrieves all current ratings in database
     public List<Ratings> getRatings(){
         return ratingRepository.findAll();
     }
 
-    // method to add a new rating(used by the POST mapping in Controller)
+    // creates a new rating in database
     public void addNewRating(Ratings rating){
         String rater = rating.getRaterName();
         String book = rating.getBookName();
@@ -42,4 +42,13 @@ public class RatingsService {
         ratingRepository.save(rating);
         System.out.println("\nNew rating saved to database.");
     }
+
+    // retrieve the average rating for a book
+    public double getAverageRatingOfBook(String bookName){
+        double average = ratingRepository.findAverageRatingOfBook(bookName);
+        System.out.println("\nAverage rating of " + bookName + " is " + average);
+
+        return ratingRepository.findAverageRatingOfBook(bookName);
+    }
+
 }
