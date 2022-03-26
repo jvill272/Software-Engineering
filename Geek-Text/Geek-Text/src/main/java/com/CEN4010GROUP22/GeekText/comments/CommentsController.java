@@ -6,11 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "comments")
 public class CommentsController {
     
     private final CommentsService commentService;
@@ -20,14 +18,14 @@ public class CommentsController {
         this.commentService = commentService;
     }
 
-    @GetMapping
+    @GetMapping(path = "comments")
     public List<Comments> getComments(){
         System.out.println("GET Request for comments is successful.");
 
         return commentService.getComments(); // returns all comments currently in database
     }
 
-    @PostMapping
+    @PostMapping(path = "comments")
     public void addNewComment(@RequestBody Comments comment){
         System.out.println("\nRequest body: " + comment + "\n");
 

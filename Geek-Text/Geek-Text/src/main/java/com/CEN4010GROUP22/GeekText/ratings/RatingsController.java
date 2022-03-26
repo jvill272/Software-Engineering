@@ -4,13 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "ratings")
 public class RatingsController {
 
     private final RatingsService ratingService;
@@ -20,18 +19,27 @@ public class RatingsController {
         this.ratingService = ratingService;
     }
 
-    @GetMapping
+    // retrieve all ratings in database
+    @GetMapping(path = "ratings")
 	public List<Ratings> getRatings(){
-        System.out.println("GET Request for ratings is successful.");
+        System.out.println("\nGET Request for ratings is successful.");
         
         return ratingService.getRatings(); // returns all ratings currently in the database
     }
 
-    @PostMapping
+    // create a new rating in database
+    @PostMapping(path = "ratings")
     public void addNewRating(@RequestBody Ratings rating){
-        System.out.println("\nRequest body: " + rating + "\n");
+        System.out.println("\nRequest body: " + rating);
         
         ratingService.addNewRating(rating);
     }
 
+    // retrieve the average rating for a book based on path variable
+    @GetMapping(path = "ratings/average/{book}")
+    public double avgRatingOfBook(@PathVariable("book") String book){
+        System.out.println("\nCalculating the average rating of " + book + ".");
+
+        return ratingService.getAverageRatingOfBook(book);
+    }
 }
