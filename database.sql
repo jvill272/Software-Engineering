@@ -81,10 +81,20 @@ INSERT INTO Users
 VALUES
 (
     'BWAT001',
-	'bwat001',
+	'bwat001@fiu.edu',
     'SECONDPword',
     '987 First St',
     'Brandon Wat'
+);
+
+INSERT INTO Users
+VALUES
+(
+    'MWONG035',
+	'mwong035@fiu.edu',
+    'THIRDPword',
+    '123 Fake St',
+    'Michael Wong'
 );
 
 CREATE TABLE Credit (

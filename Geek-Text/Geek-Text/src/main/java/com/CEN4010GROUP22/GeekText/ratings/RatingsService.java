@@ -45,10 +45,15 @@ public class RatingsService {
 
     // retrieve the average rating for a book
     public double getAverageRatingOfBook(String bookName){
-        double average = ratingRepository.findAverageRatingOfBook(bookName);
-        System.out.println("\nAverage rating of " + bookName + " is " + average);
+        double averageRating = ratingRepository.findAverageRatingOfBook(bookName);
+        System.out.println("\nAverage rating of " + bookName + " is " + averageRating);
 
-        return ratingRepository.findAverageRatingOfBook(bookName);
+        return averageRating;
+    }
+
+    // retrieve a sorted list(by highest rating) of ratings and comments for a book
+    public List<Object> getSortedListOfRatingsAndComments(String bookName){
+        return ratingRepository.sortRatingsAndCommentsByHighestRating(bookName);
     }
 
 }
