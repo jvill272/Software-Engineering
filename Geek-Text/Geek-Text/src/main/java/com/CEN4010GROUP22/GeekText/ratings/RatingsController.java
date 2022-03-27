@@ -42,4 +42,13 @@ public class RatingsController {
 
         return ratingService.getAverageRatingOfBook(book);
     }
+
+    // retrieve a sorted list(by highest rating) of ratings and comments for a book based on path variable
+    @GetMapping(path = "ratings/sorted/{book}")
+    public List<Object> sortedListOfRatingsAndComments(@PathVariable("book") String book){
+        System.out.println("\nRetrieving a sorted list(by highest rating) of ratings and comments for " + book + ".");
+
+        return ratingService.getSortedListOfRatingsAndComments(book);
+    }
+
 }
