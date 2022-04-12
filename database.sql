@@ -12,7 +12,7 @@ CREATE TABLE Authors (
 );
 
 CREATE TABLE Books (
-    book_id bigint PRIMARY KEY,
+    book_id text NOT NULL PRIMARY KEY,
     book_name text NOT NULL UNIQUE,
     book_des text NOT NULL,
     book_price decimal NOT NULL,
