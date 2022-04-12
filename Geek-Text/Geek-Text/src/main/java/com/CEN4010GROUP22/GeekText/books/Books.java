@@ -19,7 +19,7 @@ public class Books {
     private String description;
 
     @Column(name = "book_price", columnDefinition = "decimal")
-    float price;
+    private float price;
 
     @Id
     @Column(name = "fk_author_name", columnDefinition = "text")
@@ -49,10 +49,47 @@ public class Books {
         this.copiesSold = copiesSold;
     }
 
+    public String getIsbn() { return this.isbn; }
+    public void setIsbn(String isbn) { this.isbn = isbn; }
+    //Changed getBookName, to getBookDetailName to prevent methods having the same name.
+    public String getBookDetailName() { return this.bookName; }
+    public void setBookName(String bookName) { this.bookName = bookName; }
+
+    public String getDescription() { return this.description; }
+    public void setDescription(String description) { this.description = description;}
+
+    public float getPrice() { return this.price; }
+    public void setPrice(float price) { this.price = price; }
+
+    public String getAuthor() { return this.author; }
+    public void setAuthor(String author) { this.author = author; }
+
+    public String getGenre() { return this.genre; }
+    public void setGenre(String genre) { this.genre = genre; }
+
+
+    public String getPublisher() { return this.publisher; }
+    public void setPublisher(String publisher) { this.publisher = publisher; }
+
+    public String getYearPublished() { return this.yearPublished; }
+    public void setYearPublished(String yearPublished) { this.yearPublished = yearPublished; }
+
+    public int getCopiesSold() { return this.copiesSold; }
+    public void setCopiesSold(int copiesSold) { this.copiesSold = copiesSold; }
+
     // toString method
     @Override
     public String toString() {
-        return "";
+        return "{" +
+                " isbn='" + getIsbn() + "'" +
+                ", bookName ='" + getBookDetailName() + "'" +
+                ", description='" + getDescription() + "'" +
+                ", price='" + getPrice() + "'" +
+                ", author='" + getAuthor() + "'" +
+                ", genre='" + getGenre() + "'" +
+                ", publisher='" + getPublisher() + "'" +
+                ", yearPublished='" + getYearPublished() + "'" +
+                ", copiesSold" + getCopiesSold() + "'" +
+                "}";
     }
-
 }
