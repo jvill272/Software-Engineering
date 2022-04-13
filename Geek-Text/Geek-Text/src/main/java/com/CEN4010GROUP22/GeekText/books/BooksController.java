@@ -18,20 +18,15 @@ public class BooksController {
         this.booksService = booksService;
     }
 
-
-    @PostMapping(path = "books")
-    public void addNewBook(@RequestBody Books book){
-        System.out.println("\nRequest body: " + book);
-
+    @PostMapping(path = "books/add")
+    public void addNewBook(@RequestBody Books book) {
+        System.out.println("\nRequest Body: " + book);
         booksService.addNewBook(book);
     }
 
-
-    @GetMapping(path = "books/{isbn}")
-    public String getBookDetails() {
+    @GetMapping(path = "books/search/{isbn}") // was books/{isbn}
+    public String bookDetails(@PathVariable("isbn") String isbn) {
         System.out.println("Get request for Book Details is successful.");
-        return booksService.getBookDetails();
+        return booksService.getBookDetails(isbn);
     }
-
-
 }
