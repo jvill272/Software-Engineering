@@ -48,7 +48,7 @@ foreign key (user_id) references users(user_id);
 
 
 create table books (
-book_isbn integer primary key not null;
+book_isbn text primary key not null;
 book_title varchar(30) not null;
 book_description text not null,
 book_genre varchar(10) not null,
@@ -56,7 +56,7 @@ book_author varchar (50) not null,
 book_publisher varchar (50) not null,
 book_price decimal (10,2) not null;
 book_publication_date date not null;
-book_copies_cold integar not null;
+book_copies_sold integer not null;
 book_rating decimal(1,2),
 );
 

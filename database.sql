@@ -1,4 +1,3 @@
-DROP TABLE Authors CASCADE;
 DROP TABLE Books CASCADE;
 DROP TABLE Users CASCADE;
 DROP TABLE Credit CASCADE;
@@ -6,10 +5,6 @@ DROP TABLE Cart CASCADE;
 DROP TABLE Ratings CASCADE;
 DROP TABLE Comments CASCADE;
 DROP TABLE Wishlists CASCADE;
-
-CREATE TABLE Authors (
-    author_name text PRIMARY KEY
-);
 
 CREATE TABLE Books (
     book_id text NOT NULL PRIMARY KEY,
@@ -20,18 +15,11 @@ CREATE TABLE Books (
     book_publisher text NOT NULL,
     book_year int,
     book_sales integer,
-           fk_author_name text,
-           CONSTRAINT fk_author_name
-                FOREIGN KEY (fk_author_name)
-                REFERENCES Authors (author_name)
-);
-
-INSERT INTO Authors VALUES (
-    'Stephen King'
+    fk_author_name text NOT NULL
 );
 
 INSERT INTO Books VALUES (
-    9781501156700,
+    '9781501156700',
     'Pet Semetary',
     'It is a horror book about a dead cat',
     9.99,
@@ -42,12 +30,8 @@ INSERT INTO Books VALUES (
     'Stephen King'
 );
 
-INSERT INTO Authors VALUES (
-    'J.K. Rowling'
-);
-
 INSERT INTO Books VALUES (
-    0747532699,
+    '0747532699',
     'Harry Potter and the Sorcerer''s Stone',
     'You''re a wizard, Harry.',
     11.99,
