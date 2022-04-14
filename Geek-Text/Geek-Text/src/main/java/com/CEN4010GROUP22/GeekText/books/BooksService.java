@@ -33,4 +33,9 @@ public class BooksService {
         String bookDetails = booksRepository.findBookDetails(isbn);
         return bookDetails;
     }
+    public String getBooksByAuthor(String author) {
+        String bookDetails = booksRepository.findBooksByAuthor(author);
+        return bookDetails;
+    }
+
 }

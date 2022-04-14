@@ -9,4 +9,7 @@ public interface BooksRepository extends JpaRepository<Books, BooksId> {
     // retrieve the book details for a specific isbn.
     @Query("SELECT b.isbn, b.bookName, b.description, b.price, b.author, b.genre, b.publisher, b.yearPublished, b.copiesSold FROM Books b WHERE b.isbn = ?1")
     String findBookDetails(String isbn);
+
+    @Query("SELECT b.isbn, b.bookName, b.description, b.price, b.author, b.genre, b.publisher, b.yearPublished, b.copiesSold FROM Books b WHERE b.author = ?1")
+    String findBooksByAuthor(String author);
 }

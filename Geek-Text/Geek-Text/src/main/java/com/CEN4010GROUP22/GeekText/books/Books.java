@@ -38,8 +38,7 @@ public class Books {
     @Column(name = "book_sales", columnDefinition = "integer")
     private int copiesSold;
 
-    @Id
-    @Column(name = "fk_author_name", nullable = false, columnDefinition = "text")
+    @Column(name = "author_name", nullable = false, columnDefinition = "text")
     private String author;
 
     public Books() {
