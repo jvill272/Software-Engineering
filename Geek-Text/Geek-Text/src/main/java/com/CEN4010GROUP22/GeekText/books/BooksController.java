@@ -24,9 +24,15 @@ public class BooksController {
         booksService.addNewBook(book);
     }
 
-    @GetMapping(path = "books/search/{isbn}") // was books/{isbn}
+    @GetMapping(path = "books/search/isbn/{isbn}") // was books/{isbn}
     public String bookDetails(@PathVariable("isbn") String isbn) {
         System.out.println("Get request for Book Details is successful.");
         return booksService.getBookDetails(isbn);
+    }
+
+    @GetMapping(path = "books/search/author/{author}")
+    public String books(@PathVariable("author") String author) {
+        System.out.println("Get request for Book by Author is successful.");
+        return booksService.getBooksByAuthor(author);
     }
 }

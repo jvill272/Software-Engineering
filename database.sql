@@ -1,3 +1,4 @@
+DROP TABLE Authors CASCADE;
 DROP TABLE Books CASCADE;
 DROP TABLE Users CASCADE;
 DROP TABLE Credit CASCADE;
@@ -5,6 +6,14 @@ DROP TABLE Cart CASCADE;
 DROP TABLE Ratings CASCADE;
 DROP TABLE Comments CASCADE;
 DROP TABLE Wishlists CASCADE;
+
+CREATE TABLE Authors (
+	author_id SERIAL NOT NULL PRIMARY KEY,
+	first_name text NOT NULL,
+	last_name text NOT NULL,
+	biography text,
+	publisher text
+);
 
 CREATE TABLE Books (
     book_id text NOT NULL PRIMARY KEY,
@@ -15,11 +24,19 @@ CREATE TABLE Books (
     book_publisher text NOT NULL,
     book_year int,
     book_sales integer,
-    fk_author_name text NOT NULL
+    author_name text NOT NULL
+);
+
+INSERT INTO Authors VALUES (
+    DEFAULT,
+	'Stephen',
+	'King',
+	'Stephen Edwin King is an American author of horror, supernatural fiction, suspense, crime, science-fiction, and fantasy novels',
+	'Scribner'
 );
 
 INSERT INTO Books VALUES (
-    '9781501156700',
+    9781501156700,
     'Pet Semetary',
     'It is a horror book about a dead cat',
     9.99,
@@ -30,8 +47,17 @@ INSERT INTO Books VALUES (
     'Stephen King'
 );
 
+INSERT INTO Authors VALUES (
+	DEFAULT,
+    'J.K.',
+	'Rowling',
+	'Joanne Rowling, CH OBE HonFRSE FRCPE FRSL, is a British author and philanthropist known by her pen name J. K. Rowling. 
+	She wrote a seven-volume children''s fantasy series, Harry Potter, published from 1997 to 2007.',
+	'Bloomsbury Publishing'
+);
+
 INSERT INTO Books VALUES (
-    '0747532699',
+    0747532699,
     'Harry Potter and the Sorcerer''s Stone',
     'You''re a wizard, Harry.',
     11.99,
